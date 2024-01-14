@@ -44,6 +44,7 @@ export default function Homepage() {
 
     const [isItOpen, setIsItOpen] = useState(false);
     const [parentWidth, setParentWidth] = useState(0);
+    const [ scrollTop, setScrollTop ] = useState(window.scrollY);
     const [ isMouseIn, setIsMouseIn ] = useState(false);
 
     const handleMouseIn = () => {
@@ -89,8 +90,11 @@ export default function Homepage() {
 
     useEffect(() => {
         window.addEventListener("resize", (e) => setParentWidth(e.target.innerWidth));
-
-        return () => window.addEventListener("resize", (e) => setParentWidth(e.target.innerWidth));
+        window.addEventListener("scroll", e => setScrollTop(window.scrollY));
+        return () => {
+            window.removeEventListener("scroll", e => setScrollTop(window.scrollY));
+            window.removeEventListener("resize", (e) => setParentWidth(e.target.innerWidth));
+        }
     }, []);
 
     return (
@@ -102,13 +106,13 @@ export default function Homepage() {
             {
                 !isItOpen && (
                     <div className="z-[999] flex justify-between px-10 fixed w-full top-0" >
-                        <img className="w-[122px] h-[118px] mt-7" src={logo} alt="Tig logo" />
+                        <img className={`${scrollTop > 150 ? "-translate-y-[150px]" : "translate-y-0"} transform duration-300 w-[122px] h-[118px] mt-7`} src={logo} alt="Tig logo" />
 
                         <div className='lg:flex lg:items-center lg:gap-x-10' >
                             <button
                                 onMouseEnter={handleMouseIn}
                                 onMouseLeave={handleMouseOut}
-                                className={`lg:block hidden w-[139px] text-white hover:text-[#fff] h-[48px] text-center hover:text-right hover:bg-[#5ba1bd] px-4 transition duration-300 block font-light border border-white border-solid rounded-full`}
+                                className={`${scrollTop > 150 ? "-translate-y-[145px]" : "translate-y-0"} lg:block hidden w-[139px] text-white hover:text-[#fff] h-[48px] text-center hover:text-right hover:bg-[#5ba1bd] px-4 transition duration-300 block font-light border border-white border-solid rounded-full`}
                             >say hello {" "}
                                 <span className={`transition inline-block text-xl duration-300 ${isMouseIn ? "rotate-45" : "rotate-0"}`} >+</span>
                             </button>
@@ -124,7 +128,7 @@ export default function Homepage() {
                     </div>
                 )
             }
-            <div className="px-10 pt-24 md:pt-44 pb-10" style={{ background: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${mobileBanner})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }} >
+            <div className="px-10 pt-24 md:pt-44 pb-10 " style={{ background: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${mobileBanner})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }} >
                 <p className='mt-44 text-white uppercase font-semibold text-left' >the inter group</p>
                 <h1 className='text-[#99c6d6] my-5 text-5xl max-w-[90%] font-medium text-left' >more than a creative digital marketing agency</h1>
                 <p className='text-white mt-8 mb-12 leading-[22px] max-w-[90%]' >

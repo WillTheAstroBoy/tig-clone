@@ -13,8 +13,8 @@ export default function WorkCard({ name, bullets, backgroundImg, hoverBackground
     }
 
     return (
-        <div onMouseEnter={handleMouseIn} onMouseLeave={handleMouseOut} className={`shrink-0 cursor-pointer z-[6] flex md:mr-5 h-[110vw] md:h-[500px] relative flex-col justify-end `} style={{backgroundImage: `url(${backgroundImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} >
-            <div className="relative h-2/5 md:h-3/5 bg-[rgba(0,0,0,0.6)] px-6 z-[9]" >
+        <div onMouseEnter={handleMouseIn} onMouseLeave={handleMouseOut} className={`shrink-0 cursor-pointer z-[6] flex md:mr-5 min-h-[450px] h-[110vw] md:h-[500px] relative flex-col justify-end `} style={{backgroundImage: `url(${backgroundImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} >
+            <div className="relative min-h-[250px] h-2/5 md:h-3/5 bg-[rgba(0,0,0,0.6)] px-6 z-[9]" >
                 <button className="absolute bg-[#5ba1bd] rounded-full w-[96px] h-[39px] flex items-center justify-center text-white -top-5 p-4 border-white border border-solid" >view +</button>
                 <p className="text-2xl text-white font-semibold mt-16 mb-8" >{name}</p>
                 <ul className={`text-white my-4 mb-0 list-disc ml-4 text-[17px] font-light`} >
