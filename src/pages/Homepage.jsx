@@ -130,7 +130,7 @@ export default function Homepage() {
             }
             <div className="px-10 pt-24 md:pt-44 pb-10 " style={{ background: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${mobileBanner})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }} >
                 <p className='mt-44 text-white uppercase font-semibold text-left' >the inter group</p>
-                <h1 className='text-[#99c6d6] my-5 text-5xl max-w-[90%] font-medium text-left' >more than a creative digital marketing agency</h1>
+                <h1 className='text-[#99c6d6] my-5 text-5xl lg:text-6xl max-w-[90%] font-medium text-left' >more than a creative digital marketing agency</h1>
                 <p className='text-white mt-8 mb-12 leading-[22px] max-w-[90%]' >
                     TIG is a Harrogate-based creative digital marketing agency. We guarantee results across six key business areas: <span className='font-semibold' >graphic design, photography, print, web design & build, seo marketing</span> and <span className='font-medium' >social media</span>.
                 </p>
